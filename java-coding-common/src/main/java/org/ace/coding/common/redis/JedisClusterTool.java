@@ -13,15 +13,15 @@ import java.util.regex.Pattern;
  *  Redis集群连接工具
  *  使用properties配置文件
  */
-public class JedisClusterUtil {
+public class JedisClusterTool {
 
-	private String addressKeyPrefix = "redis.address";
+	private String addressKey = "redis.address";
 	private JedisCluster jedisCluster;
 	private Pattern p = Pattern.compile("^.+[:]\\d{1,5}\\s*$");
 	private PropsTool propTool;
 	private GenericObjectPoolConfig conf = new GenericObjectPoolConfig();
 
-	public JedisClusterUtil(PropsTool propUtil) throws Exception {
+	public JedisClusterTool(PropsTool propUtil) throws Exception {
 		this.propTool = propUtil;
 		parseHostAndPort();
 		propertiesSet();
@@ -42,19 +42,16 @@ public class JedisClusterUtil {
 	private Set<HostAndPort> parseHostAndPort() throws Exception {
 		try {
 			Set<HostAndPort> haps = new HashSet<HostAndPort>();
-			for (Object key : propTool.getProp().keySet()) {
-				if (!((String) key).startsWith(addressKeyPrefix)) {
-					continue;
-				}
-				String val = (String) propTool.getProp().get(key);
-				boolean isIpPort = p.matcher(val.trim()).matches();
-				if (!isIpPort) {
-					throw new IllegalArgumentException("ip 或 port 不合法");
-				}
-				String[] ipAndPort = val.split(":");
-				HostAndPort hap = new HostAndPort(ipAndPort[0], Integer.parseInt(ipAndPort[1]));
-				haps.add(hap);
-			}
+            String hosts = propTool.getString(addressKey);
+            for(String host : hosts.split(",")){
+                boolean isIpPort = p.matcher(host).matches();
+                if (!isIpPort) {
+                    throw new IllegalArgumentException("ip 或 port 不合法");
+                }
+                String[] ipAndPort = host.split(":");
+                HostAndPort hap = new HostAndPort(ipAndPort[0], Integer.parseInt(ipAndPort[1]));
+                haps.add(hap);
+            }
 			return haps;
 		} catch (IllegalArgumentException ex) {
 			throw ex;

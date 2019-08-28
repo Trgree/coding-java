@@ -1,6 +1,6 @@
 package org.ace.coding.distinct.hll;
 
-import org.ace.coding.common.redis.JedisClusterUtil;
+import org.ace.coding.common.redis.JedisClusterTool;
 import org.ace.coding.common.utils.PropsTool;
 import redis.clients.jedis.JedisCluster;
 
@@ -22,7 +22,7 @@ public class RedisHLLExample {
             config = args[0];
             size = Long.parseLong(args[1]);
         }
-        JedisClusterUtil jedis = new JedisClusterUtil(new PropsTool(config));
+        JedisClusterTool jedis = new JedisClusterTool(new PropsTool(config));
         JedisCluster cluster = jedis.getCluster();
         Set<Integer> set = new HashSet<>();
         Random ran = new Random();

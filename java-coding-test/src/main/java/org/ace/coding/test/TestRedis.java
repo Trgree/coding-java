@@ -1,6 +1,6 @@
 package org.ace.coding.test;
 
-import org.ace.coding.common.redis.JedisClusterUtil;
+import org.ace.coding.common.redis.JedisClusterTool;
 import org.ace.coding.common.utils.PropsTool;
 
 /**
@@ -10,7 +10,7 @@ import org.ace.coding.common.utils.PropsTool;
 public class TestRedis {
     public static void main(String[] args) throws Exception {
         PropsTool propsTool = new PropsTool("redis.properties");
-        JedisClusterUtil util = new JedisClusterUtil(propsTool);
+        JedisClusterTool util = new JedisClusterTool(propsTool);
         System.out.println(util.getCluster().get("a"));
     }
 }

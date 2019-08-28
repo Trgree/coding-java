@@ -12,6 +12,10 @@ public class PropsTool {
 	
 	private Properties prop = new Properties();
 
+	/**
+	 * 通过resources文件构建PropsTool
+	 * @param resourceFile
+	 */
 	public PropsTool(String resourceFile){
         InputStream in = null;
         try {
@@ -30,6 +34,10 @@ public class PropsTool {
         }
     }
 
+	/**
+	 * 通过File文件构建PropsTool
+	 * @param file
+	 */
 	public PropsTool(File file) {
 		InputStreamReader in = null;
 		try {
