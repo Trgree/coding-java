@@ -6,7 +6,7 @@
 
     <groupId>org.ace</groupId>
     <artifactId>coding-java</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>java8lambda</module>
@@ -21,6 +21,7 @@
         <module>nio</module>
         <module>reflect</module>
         <module>distinct</module>
+        <module>thread</module>
     </modules>
 
     <properties>
