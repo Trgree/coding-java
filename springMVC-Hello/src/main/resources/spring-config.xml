@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--spring扫描业务层组件-->
+    <context:component-scan base-package="org.ace.springmvc.service" />
+
+    <import resource="classpath:spring-db.xml" />
+
+    <bean id="x" class="org.ace.springmvc.pojo.User" scope="singleton">
+        <!--singleton prototype request session-->
+    </bean>
+
+    <!--拦截器，aspectj是专门用于动态代理或面向AOP编程的框架，spring使用了他-->
+    <!--<aop:aspectj-autoproxy />-->
+
+</beans>

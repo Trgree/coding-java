@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+        <!--使用别名替换列名 默认true
+        select name as title from table
+        -->
+        <setting name="useColumnLabel" value="true"/>
+        <!--开启驼峰命名转换-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="defaultStatementTimeout" value="3000" />
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="proxyFactory" value="CGLIB" />
+    </settings>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="helperDialect" value="mysql" />
+            <!--将 RowBounds 中的 offset 参数当成 pageNum 使用-->
+            <property name="offsetAsPageNum" value="true" />
+            <!--使用 RowBounds 分页会进行 count 查询-->
+            <property name="rowBoundsWithCount" value="true" />
+            <!--如果 pageSize=0 或者 RowBounds.limit = 0 就会查询出全部的结果-->
+            <!--相当于没有执行分页查询，但是返回结果仍然是 Page 类型）。-->
+            <property name="pageSizeZero" value="true" />
+        </plugin>
+    </plugins>
+</configuration>

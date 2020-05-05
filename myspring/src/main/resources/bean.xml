@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="userDAO" class="com.ace.spring.dao.UserDAOImpl"></bean>
+    <bean id="userService" class="com.ace.spring.service.UserService">
+        <property name="userDAO" bean="userDAO"/>
+    </bean>
+
+</beans>
