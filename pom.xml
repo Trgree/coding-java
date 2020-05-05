@@ -4,14 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.ace.coding</groupId>
-    <artifactId>java-coding</artifactId>
+    <groupId>org.ace</groupId>
+    <artifactId>coding-java</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>java-coding-common</module>
-        <module>java-coding-test</module>
-        <module>java-coding-distinct</module>
+        <module>java8lambda</module>
+        <module>proxy</module>
+        <module>myspring</module>
+        <module>springMVC-Hello</module>
+        <module>common</module>
+        <module>sort</module>
+        <module>test</module>
+        <module>myspringMVC</module>
+        <module>gc</module>
+        <module>nio</module>
+        <module>reflect</module>
+        <module>distinct</module>
     </modules>
 
     <properties>
@@ -23,7 +32,6 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -42,4 +50,5 @@
             <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
+
 </project>
